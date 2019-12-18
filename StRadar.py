@@ -63,7 +63,7 @@ class stradar(object):
                     if len(vert_big_set & vert_bottom_set) != 0:
                         groups_sort.remove(bottom_group)
                 except ValueError as Err:
-                    print(Err, self.search)
+                    pass
         
         return groups_sort
     
