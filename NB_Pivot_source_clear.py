@@ -34,13 +34,12 @@ class nb_excel_clear(object):
         cons_estim_dict = dict() # словарь известные модели данного бренда : оценка stradar
         for i in self.brand_models_dict[df_line['Brand']]:
             cons_estim_dict[i] = StRadar.stradar(df_line['Source'], i).result()
-            print(cons_estim_dict[i])
+            print(i, ' - ', df_line['Source'])
+            pprint(cons_estim_dict)
 
         max_estim = max(cons_estim_dict.values()) #максимум оценки по известным названиям модлей
         # словарь меделей имеющих максимальное значение
         max_estim_dict = {k: v for k, v in cons_estim_dict.items() if v == max_estim}
-        pprint(max_estim_dict)
-        pprint(cons_estim_dict)
 
         # Выбираем самое длинное название модели из тех которые дали макисмум совпадения
         if len(max_estim_dict) > 1:
