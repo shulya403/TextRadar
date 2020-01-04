@@ -78,7 +78,7 @@ class nb_excel_clear(object):
        self.nec_output()
 
 
-nb_excel_clear('NB_Pivot_November_19_py.xlsx', 'NB_Pivot_stradar_lg3-d-lg5len.xlsx').fill_na()
+nb_excel_clear('NB_Pivot_November_19_py_acer.xlsx', 'NB_Pivot_stradar_lg3-d-lg5len_acer.xlsx').fill_na()
 
 
 

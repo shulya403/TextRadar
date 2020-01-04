@@ -77,13 +77,13 @@ class stradar(object):
 
         #В зачет идут группы размерностью более 1
         #длина группы в степени (log длины по основанию 3) длина в 3 символа = 3, в 2 = 1,55, в 4 = 5,75
-        # поделенный на log положения группы в строке data по основанию (5 плюс длина слова search)
+        # поделенный на log положения группы в строке data по основанию (10)
 
         try:
-            concide_exit = [x[2] ** (math.log(x[2], 3) / math.log(x[0][0] + 1, 5 + self.search_len))
+            concide_exit = [x[2] ** (math.log(x[2], 3) / math.log(x[0][0] + 1, 10))
                             for x in groups_cl if x[2] > 1]
         except ZeroDivisionError:
-            concide_exit = [x[2] ** (math.log(x[2], 3) / math.log(x[0][0] + 2, 5 + self.search_len))
+            concide_exit = [x[2] ** (math.log(x[2], 3) / math.log(x[0][0] + 2, 10))
                             for x in groups_cl if x[2] > 1]
 
         search_ln = [len(y) for y in search_words]
