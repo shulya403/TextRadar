@@ -34,7 +34,7 @@ class nb_excel_clear(object):
         cons_estim_dict = dict() # словарь известные модели данного бренда : оценка stradar
         for i in self.brand_models_dict[df_line['Brand']]:
             cons_estim_dict[i] = StRadar.stradar(df_line['Source'], i).result()
-
+            print(cons_estim_dict[i])
 
         max_estim = max(cons_estim_dict.values()) #максимум оценки по известным названиям модлей
         # словарь меделей имеющих максимальное значение
@@ -79,7 +79,7 @@ class nb_excel_clear(object):
        self.nec_output()
 
 
-nb_excel_clear('NB_Pivot_November_19_py.xlsx', 'NB_Pivot_stradar_x-st-x.xlsx').fill_na()
+nb_excel_clear('NB_Pivot_November_19_py.xlsx', 'NB_Pivot_stradar_lg3-d-lg5len.xlsx').fill_na()
 
 
 

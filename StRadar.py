@@ -75,15 +75,16 @@ class stradar(object):
         groups_cl = self.groups_clear()
         search_words = self.search.split()
 
-        print(self.search, self.data)
-        pprint(groups_cl)
-     # TODO: усилить значимость положения найденного слова ближе к началу строки для обхода ошибки 5400 rpm
+        #В зачет идут группы размерностью более 1
+        #длина группы в степени (log длины по основанию 3) длина в 3 символа = 3, в 2 = 1,55, в 4 = 5,75
+        # поделенный на log положения группы в строке data по основанию (5 плюс длина слова search)
 
 
-        concide_square = [x[2]**(x[2]-1) for x in groups_cl]
-        search_ln = [len(y)**2 for y in search_words]
+        concide_exit = [x[2] ** (math.log(x[2], 3) / math.log(x[0][0], 5 + self.search_len)) for x in groups_cl if x[2] > 1]
+        search_ln = [len(y) for y in search_words]
         
-        concide_coeff = sum(concide_square) / sum(search_ln)
+        concide_coeff = sum(concide_exit) / sum(search_ln)
+
 
   
         return concide_coeff
